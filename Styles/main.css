@@ -6,7 +6,7 @@
 }
 
 body {
-  background: url("/img/pikaso_embed.png") no-repeat center center/cover; 
+  background: url("/img/pikaso_embed.png") no-repeat center center/cover;
   font-family: Arial, sans-serif;
   line-height: 1.6;
   color: #333;
@@ -14,44 +14,91 @@ body {
 }
 
 header {
-
   background-color: #173751;
   color: #fff;
-  padding: 20px 0;
-  text-align: center;
+  padding: 0 20px;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 2.5rem;
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+}
+
+.logo {
+  width: 250px;
+  margin-right: auto;
+}
+
+nav {
+  flex-grow: 1;
 }
 
 nav ul {
   list-style: none;
+  margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: flex-end;
 }
 
 nav ul li {
-  display: inline;
-  margin: 0 15px;
+  position: relative;
 }
 
 nav ul li a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+  padding: 25px 20px;
+  display: flex;
 }
 
 nav ul li a:hover {
   text-decoration: underline;
 }
 
-.hero {
+/* Submenu Estilos */
+nav ul li ul.submenu {
+  display: none;
+  position: absolute;
+  background-color: #173751;
+  padding: 5px 5px;
+  list-style: none;
+  top: 60px;
+  left: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
 
+nav ul li ul.submenu li {
+  display: block;
+}
+
+nav ul li ul.submenu li a {
+  color: #f4f4f4;
+  padding: 20px 25px;
+  text-decoration: none;
+  display: block;
+  font-weight: normal;
+}
+
+nav ul li ul.submenu li a:hover {
+  background-color: rgb(118, 167, 201);
+
+}
+
+/* Exibir submenu ao passar o mouse */
+nav ul li:hover ul.submenu {
+  display: block;
+}
+
+.hero {
   color: #fff;
   height: 710px;
   width: 1282px;
-  display: flex;  
+  display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -67,7 +114,7 @@ nav ul li a:hover {
 }
 
 .btn-primary {
-  background-color: #0056b3;
+  background-image: linear-gradient(to right, #173751, rgb(118, 167, 201));
   color: #fff;
   padding: 10px 20px;
   text-decoration: none;
@@ -76,7 +123,7 @@ nav ul li a:hover {
 }
 
 .btn-primary:hover {
-  background-color: #004494;
+  background-image: linear-gradient(to right, #173751, rgb(118, 167, 201));
 }
 
 section {
