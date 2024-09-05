@@ -7,7 +7,7 @@
 
 body {
   background: url("/img/pikaso_embed.png") no-repeat center center/cover;
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   line-height: 1.6;
   color: #333;
   background-color: #f4f4f4;
@@ -61,6 +61,7 @@ nav ul li a:hover {
 
 /* Submenu Estilos */
 nav ul li ul.submenu {
+  border-radius: 10px;
   display: none;
   position: absolute;
   background-color: #173751;
@@ -86,6 +87,7 @@ nav ul li ul.submenu li a {
 
 nav ul li ul.submenu li a:hover {
   background-color: rgb(118, 167, 201);
+  border-radius: 10px;
 
 }
 
