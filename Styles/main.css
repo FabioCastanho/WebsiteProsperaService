@@ -78,7 +78,7 @@ nav ul li ul.submenu li {
 }
 
 nav ul li ul.submenu li a {
-  color: #f4f4f4;
+  color: #cbb26b;
   padding: 20px 25px;
   text-decoration: none;
   display: block;
@@ -86,7 +86,7 @@ nav ul li ul.submenu li a {
 }
 
 nav ul li ul.submenu li a:hover {
-  background-color: rgb(118, 167, 201);
+  background-color: rgb(77, 121, 153);
   border-radius: 10px;
 
 }
@@ -190,3 +190,12 @@ footer {
 footer p {
   margin: 5px 0;
 }
+
+.options{
+  color: #cbb26b;
+}
+nav ul li a:hover {
+  text-decoration: none;
+  color:#fff;
+}
+
