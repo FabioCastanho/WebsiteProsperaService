@@ -5,19 +5,26 @@
   box-sizing: border-box;
 }
 
-body {
- 
-  font-family: "Poppins", sans-serif;
-  line-height: 1.6;
-  color: #333;
-  background-color: #f4f4f4;
-}
-
 header {
   background-color: #173751;
   color: #fff;
   padding: 0 20px;
+  position: fixed; /* Torna o header fixo */
+  top: 0;
+  left: 0;
+  width: 100%; /* Garante que ocupe toda a largura da página */
+  z-index: 1000; /* Garante que o header fique acima de outros elementos */
 }
+
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding-top: 90px; /* Ajusta o espaço para o conteúdo abaixo da navbar fixa */
+}
+
 
 .header-content {
   display: flex;
@@ -96,25 +103,7 @@ nav ul li:hover ul.submenu {
   display: block;
 }
 
-.hero {
 
-  color: #fff;
-  height: 710px;
-  width: 1282px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.hero h2 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  font-size: 1.2rem;
-}
 
 .btn-primary {
   background-image: linear-gradient(to right, #173751, rgb(118, 167, 201));
@@ -201,7 +190,9 @@ nav ul li a:hover {
 }
 
 #especialidades {
-  background: url("/img/pikaso_embed.png") no-repeat center center/cover;
+  margin-top: 0;
+  padding-top: 0;
+  background: url("/img/pikaso_embed.png") no-repeat center top/cover;
   padding: 50px 0;
   text-align: center;
 }
@@ -215,7 +206,7 @@ nav ul li a:hover {
 #especialidades h2 {
   font-size: 2.5em;
   margin-bottom: 40px;
-  color: #333;
+  color: #173751;
 }
 
 #especialidades .grid {
@@ -225,6 +216,7 @@ nav ul li a:hover {
 }
 
 #especialidades .especialidade {
+  margin-top: 350px; /* Ajuste este valor até que as caixas fiquem na posição desejada */
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
@@ -246,11 +238,11 @@ nav ul li a:hover {
 #especialidades h3 {
   font-size: 1.5em;
   margin-bottom: 10px;
-  color: #333;
+  color: #173751;
 }
 
 #especialidades p {
   font-size: 1em;
-  color: #666;
+  color: #173751;
   line-height: 1.6;
 }
