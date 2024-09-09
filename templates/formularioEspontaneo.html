@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/Styles/styles.css" />
+    <link rel="stylesheet" href="/Styles/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Vaga Espontânea</title>
+  </head>
+  <body>
+    <header>
+      <!-- Cabeçalho removido para brevidade -->
+    </header>
+
+    <div class="container">
+      <div class="header">
+        <h2>Vaga Espontânea</h2>
+      </div>
+
+      <form id="form" class="form">
+        <div class="form-control">
+          <label for="username">Nome Completo</label>
+          <input
+            type="text"
+            id="username"
+            placeholder="Digite o seu nome Completo..."
+          />
+          <small>Mensagem de erro</small>
+        </div>
+
+        <div class="form-control">
+          <label for="email">Email</label>
+          <input type="text" id="email" placeholder="Digite o seu email..." />
+          <small>Mensagem de erro</small>
+        </div>
+
+        <div class="form-control">
+          <label for="telefone">Telefone</label>
+          <input
+            type="text"
+            id="telefone"
+            placeholder="Digite o seu número de telefone..."
+          />
+          <small>Mensagem de erro</small>
+        </div>
+
+        <div class="form-control">
+          <label for="nacionalidade">Nacionalidade</label>
+          <input
+            type="text"
+            id="nacionalidade"
+            placeholder="Digite a sua Nacionalidade..."
+          />
+          <small>Mensagem de erro</small>
+        </div>
+
+        <div class="form-control">
+          <label for="area-concorre">A que Area se está a candidatar</label>
+          <input
+            type="text"
+            id="area-concorre"
+            placeholder="Digite A que Area se está a candidatar..."
+          />
+          <small>Mensagem de erro</small>
+        </div>
+
+        <div class="form-control">
+          <label for="CV">Coloque aqui o seu Curriculo</label>
+          <input type="file" id="CV" />
+          <small>Mensagem de erro</small>
+        </div>
+        <button type="submit">Enviar</button> <br />
+      </form>
+      <form class="form-voltar">
+        <button class="botao-voltar" type="submit">Voltar</button>
+      </form>
+    </div>
+
+    <script src="./scripts.js"></script>
+  </body>
+</html>
