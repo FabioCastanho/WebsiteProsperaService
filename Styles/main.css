@@ -172,6 +172,8 @@ section {
   line-height: 1.6;
 }
 .seccao-slogan {
+  margin-top: 0;
+  padding-top: 0;
   background-color: #173751;
   padding: 40px 20px;
   border-radius: 8px;
@@ -233,6 +235,15 @@ h2 {
   font-size: 2rem;
   color: #333;
 }
+
+#seccao-img{
+  margin-top: 0;
+  padding-top: 0;
+  background: url("/img/woman-selecting-pictures-people.png") no-repeat center top/cover;
+  padding: 280px 0;
+  text-align: center;
+}
+
 
 .seccao-slogan2 {
   background-color: #fff;
