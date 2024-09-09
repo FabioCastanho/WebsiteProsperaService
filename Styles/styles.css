@@ -36,7 +36,7 @@
   }
   
   .form {
-    padding: 20px;
+    padding: 10px;
   }
   
   .form-control {
@@ -114,15 +114,15 @@
     position: relative;
   }
 
-        .botao-voltar {
-        background-color: #173751;
-        border: 2px solid #173751;
-        color: #fff;
-        font-size: 14px;
-        width: 100%;
-        border-radius: 10px;
-        padding: 10px;
-        cursor: pointer;
-        }
+    .botao-voltar {
+    background-color: #173751;
+    border: 2px solid #173751;
+    color: #fff;
+    font-size: 14px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    }
 
        
