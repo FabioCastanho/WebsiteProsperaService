@@ -1,0 +1,137 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f5f5f5;
+  color: #173751; /* Cor para todo o texto */
+}
+
+.container {
+  width: 80%;
+  max-width: 1000px;
+  margin: 50px auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #173751;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.form-section h2 {
+  color: #173751;
+}
+.contact-item h3 {
+  color: #173751;
+}
+.contact-section h2 {
+  color: #173751;
+}
+
+p {
+  color: #173751;
+}
+
+a {
+  color: #0055aa;
+}
+
+label {
+  color: #173751;
+}
+
+button {
+  color: #173751;
+}
+
+/* Layout para exibir contactos e formulário lado a lado */
+.content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.contact-section,
+.form-section {
+  flex: 1;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos da secção de contactos */
+.contact-details {
+  margin-top: 20px;
+}
+
+.contact-item {
+  margin-bottom: 20px;
+}
+
+.contact-item p {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.contact-item a {
+  color: #0055aa;
+  text-decoration: none;
+}
+
+/* Estilos da secção do formulário */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  color: #173751; /* Cor para o texto dos inputs */
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #173751;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0055aa;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .contact-section,
+  .form-section {
+    margin-bottom: 20px;
+  }
+}
