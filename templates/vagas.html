@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vagas Disponíveis</title>
+    <link rel="stylesheet" href="/Styles/vagas.css">
+    <link rel="stylesheet" href="/Styles/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="/templates/index.html"
+              ><img
+                class="logo"
+                src="/img/LOGO3_upscayl_16x_ultrasharp.png"
+                alt="logotipo"
+            /></a>
+    
+            <nav style="background-color: #173751; height: 80px">
+              <ul>
+                <li class="dropdown">
+                  <a class="options" href="#">Candidaturas &nbsp;&#9660;</a>
+                  <ul class="submenu">
+                    <li><a href="/templates/vagas.html">Vagas Disponíveis</a></li>
+                    <li>
+                      <a href="/templates/formularioEspontaneo.html"
+                        >Candidatura Espontânea</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a class="options" href="#">Empresas &nbsp;&#9660;</a>
+                  <ul class="submenu">
+                    <li><a href="#">Serviços</a></li>
+                  </ul>
+                </li>
+                <li><a class="options" href="#">Contactos</a></li>
+                <li><a class="options" href="#">Sobre nós</a></li>
+              </ul>
+            </nav>
+          </div>
+    </header>
+
+    <section class="filters">
+        <form id="filterForm">
+            <div class="filter-group">
+                <label for="location">Localização:</label>
+                <select id="location">
+                    <option value="">Todas</option>
+                    <option value="Lisboa">Lisboa</option>
+                    <option value="Porto">Porto</option>
+                    <option value="Remoto">Remoto</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="jobType">Tipo de Emprego:</label>
+                <select id="jobType">
+                    <option value="">Todos</option>
+                    <option value="Tempo Integral">Tempo Integral</option>
+                    <option value="Meio Período">Meio Período</option>
+                    <option value="Freelancer">Freelancer</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="search">Pesquisar por título:</label>
+                <input type="text" id="search" placeholder="Ex: Desenvolvedor">
+            </div>
+            <button type="button" id="filterButton">Filtrar</button>
+        </form>
+    </section>
+
+    <section class="job-listings">
+        <div class="job-item" data-location="Lisboa" data-type="Tempo Integral">
+            <h2>Desenvolvedor Full Stack</h2>
+            <p>Localização: Lisboa</p>
+            <p>Tipo: Tempo Integral</p>
+            <button class="apply-btn">Candidatar-se</button>
+        </div>
+        <div class="job-item" data-location="Porto" data-type="Meio Período">
+            <h2>Analista de Recursos Humanos</h2>
+            <p>Localização: Porto</p>
+            <p>Tipo: Meio Período</p>
+            <button class="apply-btn">Candidatar-se</button>
+        </div>
+        <div class="job-item" data-location="Remoto" data-type="Freelancer">
+            <h2>Designer Gráfico</h2>
+            <p>Localização: Remoto</p>
+            <p>Tipo: Freelancer</p>
+            <button class="apply-btn">Candidatar-se</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>Email: geral@prosperaservice.com</p>
+        <p>&copy; 2024 Prospera Service |</p>
+      </footer>
+
+    <script src="vagas.js"></script>
+</body>
+</html>
