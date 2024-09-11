@@ -62,9 +62,9 @@
         <div class="filter-group">
           <label for="location">Localização:</label>
           <select id="location">
-            <option value="">Todas</option>
-            <option value="Lisboa">Lisboa</option>
-            <option value="Porto">Porto</option>
+            <option value="">Todos</option>
+            <option value="Portugal">Portugal</option>
+            <option value="Estrangeiro">Estrangeiro</option>
             <option value="Remoto">Remoto</option>
           </select>
         </div>
@@ -72,14 +72,13 @@
           <label for="jobType">Tipo de Emprego:</label>
           <select id="jobType">
             <option value="">Todos</option>
-            <option value="Tempo Integral">Tempo Integral</option>
-            <option value="Meio Período">Meio Período</option>
-            <option value="Freelancer">Freelancer</option>
+            <option value="Tempo Integral">Full Time</option>
+            <option value="Meio Período">Part-time</option>
           </select>
         </div>
         <div class="filter-group">
           <label for="search">Pesquisar por título:</label>
-          <input type="text" id="search" placeholder="Ex: Desenvolvedor" />
+          <input type="text" id="search" placeholder="Ex: Motorista" />
         </div>
         <button type="button" id="filterButton">Filtrar</button>
       </form>
@@ -87,22 +86,28 @@
 
     <section class="job-listings">
       <div class="job-item" data-location="Lisboa" data-type="Tempo Integral">
-        <h2>Desenvolvedor Full Stack</h2>
-        <p>Localização: Lisboa</p>
-        <p>Tipo: Tempo Integral</p>
-        <button class="apply-btn">Candidatar-se</button>
+        <form action="detalhevaga.html">
+          <h2></h2>
+          <p>Localização:</p>
+          <p>Tipo:</p>
+          <button class="apply-btn">Saber Mais</button>
+        </form>
       </div>
       <div class="job-item" data-location="Porto" data-type="Meio Período">
-        <h2>Analista de Recursos Humanos</h2>
-        <p>Localização: Porto</p>
-        <p>Tipo: Meio Período</p>
-        <button class="apply-btn">Candidatar-se</button>
+        <form action="detalhevaga.html">
+          <h2></h2>
+          <p>Localização:</p>
+          <p>Tipo:</p>
+          <button class="apply-btn">Saber Mais</button>
+        </form>
       </div>
       <div class="job-item" data-location="Remoto" data-type="Freelancer">
-        <h2>Designer Gráfico</h2>
-        <p>Localização: Remoto</p>
-        <p>Tipo: Freelancer</p>
-        <button class="apply-btn">Candidatar-se</button>
+        <form action="detalhevaga.html">
+          <h2></h2>
+          <p>Localização:</p>
+          <p>Tipo:</p>
+          <button class="apply-btn">Saber Mais</button>
+        </form>
       </div>
     </section>
 
