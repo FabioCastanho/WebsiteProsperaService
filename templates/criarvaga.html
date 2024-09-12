@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhes da Vaga</title>
+    <link rel="stylesheet" href="/Styles/detalhevaga.css" />
+    <link rel="stylesheet" href="/Styles/main.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="/img/logotipo.jpg.jpg"
+      type="image/x.icon"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <a href="/templates/index.html"
+          ><img
+            class="logo"
+            src="/img/LOGO3_upscayl_16x_ultrasharp.png"
+            alt="logotipo"
+        /></a>
+
+        <nav style="background-color: #173751; height: 80px">
+            <ul>
+              <li class="dropdown">
+                <a class="options" href="#">Candidaturas &nbsp;&#9660;</a>
+                <ul class="submenu">
+                  <li><a href="criarvaga.html">Criar Vagas</a></li>
+                  <li>
+                    <a href="CandidaturasRecebidas.html">Candidaturas Recebidas</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="options" href="#">Empresas &nbsp;&#9660;</a>
+                <ul class="submenu">
+                  <li><a href="PedidosContacto.html">Pedidos Contacto</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="vaga-detalhes">
+        <h1></h1>
+        <p class="localizacao">Localização: 
+            <select id="location">
+                <option value="">Todos</option>
+                <option value="Portugal">Portugal</option>
+                <option value="Estrangeiro">Estrangeiro</option>
+                <option value="Remoto">Remoto</option>
+              </select>
+        </p>
+        <p class="tipo-contrato">Tipo de Contrato:
+            <select id="jobType">
+                <option value="">Todos</option>
+                <option value="Tempo Integral">Full Time</option>
+                <option value="Meio Período">Part-time</option>
+            </select>
+        </p>
+
+        <h2>Título da Vaga</h2>
+        <p>
+            <input style="display: block; margin-right: auto; margin-left: auto; width: 500px; height: 50px; font-size: 35px;" type="text" id="titulo"/>
+        </p>
+
+        <h2>Descrição</h2>
+        <ul>
+            <textarea name="descricao" id="descricao" rows="15" cols="86"></textarea>
+        </ul>
+
+        <h2>Requisitos</h2>
+        <ul>
+            <textarea name="descricao" id="descricao" rows="15" cols="86"></textarea>
+        </ul>
+
+        <h2>Benefícios</h2>
+        <ul>
+            <textarea name="descricao" id="descricao" rows="15" cols="86"></textarea>
+        </ul>
+
+        <button class="btn-candidatar">Criar Vaga</button>
+      </section>
+    </main>
+
+    <footer>
+      <p>Email: geral@prosperaservice.com</p>
+      <p>&copy; 2024 Prospera Service |</p>
+    </footer>
+  </body>
+</html>
