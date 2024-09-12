@@ -1,7 +1,46 @@
 #casal {
-    margin-top: 0;
-    padding-top: 0;
-    background: url("/img/woman-man-shake-hands-partners-made-deal-created-with-generative-ai-technology.jpg") no-repeat center top/cover;
-    padding: 200px;
-    text-align: center;
-  }
+  margin-top: 0;
+  padding-top: 0;
+  background: url("/img/woman-man-shake-hands-partners-made-deal-created-with-generative-ai-technology.jpg")
+    no-repeat center top/cover;
+  padding: 300px;
+  text-align: center;
+}
+
+#caixas {
+  margin-top: 0;
+  padding-top: 0;
+  padding: 10px 0;
+  text-align: center;
+}
+
+#caixas .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+#caixas h2 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  color: #173751;
+}
+
+#caixas .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+#caixas .especialidade {
+  margin-top: 10px; /* Ajuste este valor até que as caixas fiquem na posição desejada */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#caixas .especialidade:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
