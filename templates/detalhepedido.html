@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Detalhes da Vaga</title>
+    <title>Pedidos Empresas</title>
     <link rel="stylesheet" href="/Styles/detalhevaga.css" />
     <link rel="stylesheet" href="/Styles/main.css" />
     <link
@@ -19,7 +19,7 @@
   <body>
     <header>
       <div class="header-content">
-        <a href="/templates/index.html"
+        <a href="/templates/admin.html"
           ><img
             class="logo"
             src="/img/LOGO3_upscayl_16x_ultrasharp.png"
@@ -27,59 +27,43 @@
         /></a>
 
         <nav style="background-color: #173751; height: 80px">
-            <ul>
-              <li class="dropdown">
-                <a class="options" href="#">Candidaturas &nbsp;&#9660;</a>
-                <ul class="submenu">
-                  <li><a href="criarvaga.html">Criar Vagas</a></li>
-                  <li>
-                    <a href="CandidaturasRecebidas.html">Candidaturas Recebidas</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a class="options" href="#">Empresas &nbsp;&#9660;</a>
-                <ul class="submenu">
-                  <li><a href="PedidosContacto.html">Pedidos Contacto</a></li>
-                </ul>
-              </li>
-            </ul>
-          </nav>
+          <ul>
+            <li class="dropdown">
+              <a class="options" href="#">Candidaturas &nbsp;&#9660;</a>
+              <ul class="submenu">
+                <li><a href="criarvaga.html">Criar Vagas</a></li>
+                <li>
+                  <a href="CandidaturasRecebidas.html"
+                    >Candidaturas Recebidas</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="options" href="#">Empresas &nbsp;&#9660;</a>
+              <ul class="submenu">
+                <li><a href="PedidosContacto.html">Pedidos Contacto</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
       </div>
     </header>
 
     <main>
       <section class="vaga-detalhes">
-        <h1></h1>
-        <p class="localizacao">Localização:</p>
-        <p class="tipo-contrato">Tipo de Contrato:</p>
-
-        <h2>Descrição da Vaga</h2>
-        <p></p>
-
-        <h2>Responsabilidades</h2>
+        <h2>Detalhes</h2>
         <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
+          <li>Nome da Empresa</li>
+          <li>Nome de Contacto</li>
+          <li>Email</li>
+          <li>Telefone</li>
+          <li>Área de Actividade</li>
+          <li>Mensagem recebida:</li>
         </ul>
-
-        <h2>Requisitos</h2>
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-
-        <h2>Benefícios</h2>
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-
-        <button class="btn-candidatar">Candidatar-se</button>
+        <form action="/templates/PedidosContacto.html">
+          <button class="btn-candidatar">Voltar</button>
+        </form>
       </section>
     </main>
 
