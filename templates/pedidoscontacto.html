@@ -4,26 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Detalhes da Vaga</title>
-    <link rel="stylesheet" href="/Styles/detalhevaga.css" />
-    <link rel="stylesheet" href="/Styles/vagas.css" />
-    <link rel="stylesheet" href="/Styles/main.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/detalhevaga.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vagas.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="shortcut icon"
-      href="/img/logotipo.jpg.jpg"
-      type="image/x.icon"
-    />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logotipo.jpg') }}" type="image/x-icon" />
   </head>
   <body>
     <header>
       <div class="header-content">
-        <a href="/templates/admin.html"
+        <a href="admin"
           ><img
             class="logo"
-            src="/img/LOGO3_upscayl_16x_ultrasharp.png"
+            src="{{ url_for('static', filename='img/LOGO3_upscayl_16x_ultrasharp.png') }}"
             alt="logotipo"
         /></a>
 
@@ -32,9 +28,9 @@
             <li class="dropdown">
               <a class="options" href="#">Candidaturas &nbsp;&#9660;</a>
               <ul class="submenu">
-                <li><a href="criarvaga.html">Criar Vagas</a></li>
+                <li><a href="criarvaga">Criar Vagas</a></li>
                 <li>
-                  <a href="CandidaturasRecebidas.html"
+                  <a href="candidaturasrecebidas"
                     >Candidaturas Recebidas</a
                   >
                 </li>
@@ -43,7 +39,7 @@
             <li class="dropdown">
               <a class="options" href="#">Empresas &nbsp;&#9660;</a>
               <ul class="submenu">
-                <li><a href="PedidosContacto.html">Pedidos Contacto</a></li>
+                <li><a href="pedidoscontacto">Pedidos Contacto</a></li>
               </ul>
             </li>
           </ul>
@@ -81,7 +77,7 @@
 
       <section class="job-listings">
         <div class="job-item" data-location="Lisboa" data-type="Tempo Integral">
-          <form action="detalhepedido.html">
+          <form action="detalhepedido">
             <h2>EMPRESA X</h2>
             <p>Área:</p>
 

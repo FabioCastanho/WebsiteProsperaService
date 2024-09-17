@@ -117,7 +117,7 @@ section {
 #especialidades {
   margin-top: 0;
   padding-top: 0;
-  background: url("/img/pikaso_embed.png") no-repeat center top/cover;
+  background: url("/static/img/pikaso_embed.png") no-repeat center top/cover;
   padding: 50px 0;
   text-align: center;
 }
@@ -239,7 +239,7 @@ h2 {
 #seccao-img{
   margin-top: 0;
   padding-top: 0;
-  background: url("/img/woman-selecting-pictures-people.png") no-repeat center top/cover;
+  background: url("/static/img/woman-selecting-pictures-people.png") no-repeat center top/cover;
   padding: 280px 0;
   text-align: center;
 }

@@ -4,43 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prospera Service</title>
-    <link rel="stylesheet" href="/Styles/main.css" />
+
+    <!-- Link para o CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+
+    <!-- Fonte Google -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="shortcut icon"
-      href="/img/logotipo.jpg.jpg"
-      type="image/x.icon"
-    />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logotipo.jpg') }}" type="image/x-icon" />
   </head>
   <body>
     <!-- Cabeçalho -->
     <header>
       <div class="header-content">
-        <a href="/templates/admin.html"
-          ><img
-            class="logo"
-            src="/img/LOGO3_upscayl_16x_ultrasharp.png"
-            alt="logotipo"
-        /></a>
+        <!-- Link para a página principal com a logo -->
+        <a href="/">
+          <img class="logo" src="{{ url_for('static', filename='img/LOGO3_upscayl_16x_ultrasharp.png') }}" alt="logotipo" />
+        </a>
 
+        <!-- Navegação -->
         <nav style="background-color: #173751; height: 80px">
           <ul>
             <li class="dropdown">
               <a class="options" href="#">Candidaturas &nbsp;&#9660;</a>
               <ul class="submenu">
-                <li><a href="criarvaga.html">Criar Vagas</a></li>
-                <li>
-                  <a href="CandidaturasRecebidas.html">Candidaturas Recebidas</a>
-                </li>
+                <li><a href="criarvaga">Criar Vagas</a></li>
+                <li><a href="candidaturasrecebidas">Candidaturas Recebidas</a></li>
               </ul>
             </li>
             <li class="dropdown">
               <a class="options" href="#">Empresas &nbsp;&#9660;</a>
               <ul class="submenu">
-                <li><a href="PedidosContacto.html">Pedidos Contacto</a></li>
+                <li><a href="pedidoscontacto">Pedidos Contacto</a></li>
               </ul>
             </li>
           </ul>
@@ -48,17 +47,10 @@
       </div>
     </header>
 
+    <!-- Conteúdo principal -->
+    <!-- Aqui você pode adicionar o conteúdo do corpo da página -->
 
-
-
-
-
-
-
-
-
-
-
+    <!-- Rodapé -->
     <footer>
       <p>Email: geral@prosperaservice.com</p>
       <p>&copy; 2024 Prospera Service |</p>

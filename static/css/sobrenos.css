@@ -1,7 +1,7 @@
 #team {
   margin-top: 0;
   padding-top: 0;
-  background: url("/img/cabeçalho.jpg") no-repeat center bottom/cover;
+  background: url("/static/img/cabeçalho.jpg") no-repeat center bottom/cover;
   padding: 300px;
   text-align: center;
   margin: 0;
@@ -10,7 +10,7 @@
 #team1 {
   margin-top: 0;
   padding-top: 0;
-  background: url("/img/pikaso_embed\ \(1\).png") no-repeat center bottom/cover;
+  background: url("/static/img/pikaso_embed\ \(1\).png") no-repeat center bottom/cover;
   padding: 300px;
   text-align: center;
   margin: 0;
@@ -21,7 +21,7 @@
   display: inline-block;
   margin-top: 0;
   padding-top: 0;
-  background: url("/img/LOGO3_upscayl_16x_ultrasharp.png") no-repeat center
+  background: url("/static/img/LOGO3_upscayl_16x_ultrasharp.png") no-repeat center
     bottom/cover;
   padding: 300px;
   text-align: center;

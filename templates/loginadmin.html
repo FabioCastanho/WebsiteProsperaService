@@ -4,17 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link rel="stylesheet" href="/Styles/loginadmin.css" />
-    <link
-      rel="shortcut icon"
-      href="/img/logotipo.jpg.jpg"
-      type="image/x.icon"
-    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/loginadmin.css') }}" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logotipo.jpg') }}" type="image/x-icon" />
   </head>
   <body>
     <div class="login-container">
       <h2>Login</h2>
-      <form action="admin.html">
+      <form action="admin">
         <div class="input-container">
           <label for="username">Utilizador</label>
           <input type="text" id="username" name="username" required />
