@@ -4,15 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logotipo.jpg') }}" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='img/logotipo.jpg') }}"
+      type="image/x-icon"
+    />
     <title>Vaga Espontânea</title>
   </head>
   <body>
@@ -79,7 +89,7 @@
         </div>
         <button type="submit">Enviar</button>
       </form>
-      <form id="form" class="form" action="index">
+      <form id="form" class="form" action="/">
         <button class="botao-voltar" type="submit">Voltar</button>
       </form>
     </div>

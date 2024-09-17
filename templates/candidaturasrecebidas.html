@@ -4,21 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Detalhes da Vaga</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/detalhevaga.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/vagas.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/detalhevaga.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/vagas.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logotipo.jpg') }}" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='img/logotipo.jpg') }}"
+      type="image/x-icon"
+    />
   </head>
   <body>
     <header>
       <div class="header-content">
         <!-- Link para a página principal com a logo -->
-        <a href="">
-          <img class="logo" src="{{ url_for('static', filename='img/LOGO3_upscayl_16x_ultrasharp.png') }}" alt="logotipo" />
+        <a href="/">
+          <img
+            class="logo"
+            src="{{ url_for('static', filename='img/LOGO3_upscayl_16x_ultrasharp.png') }}"
+            alt="logotipo"
+          />
         </a>
 
         <!-- Navegação -->
@@ -28,7 +45,9 @@
               <a class="options" href="#">Candidaturas &nbsp;&#9660;</a>
               <ul class="submenu">
                 <li><a href="criarvaga">Criar Vagas</a></li>
-                <li><a href="candidaturasrecebidas">Candidaturas Recebidas</a></li>
+                <li>
+                  <a href="candidaturasrecebidas">Candidaturas Recebidas</a>
+                </li>
               </ul>
             </li>
             <li class="dropdown">
@@ -42,43 +61,43 @@
       </div>
     </header>
     <main>
-        <section class="filters">
-            <form id="filterForm">
-              <div class="filter-group">
-                <label for="location">Localização:</label>
-                <select id="location">
-                  <option value="">Todos</option>
-                  <option value="Portugal">Portugal</option>
-                  <option value="Estrangeiro">Estrangeiro</option>
-                  <option value="Remoto">Remoto</option>
-                </select>
-              </div>
-              <div class="filter-group">
-                <label for="jobType">Tipo de Emprego:</label>
-                <select id="jobType">
-                  <option value="">Todos</option>
-                  <option value="Tempo Integral">Full Time</option>
-                  <option value="Meio Período">Part-time</option>
-                </select>
-              </div>
-              <div class="filter-group">
-                <label for="search">Pesquisar por título:</label>
-                <input type="text" id="search" placeholder="Ex: Motorista" />
-              </div>
-              <button type="button" id="filterButton">Filtrar</button>
-            </form>
-          </section>
-        <section class="job-listings">
-            <div class="job-item" data-location="Lisboa" data-type="Tempo Integral">
-              <form action="detalhecandidatura">
-                <h2></h2>
-                <p>Candidatura Expontânea: Sim/Não</p>
-                <p>Área/Vaga:</p>
+      <section class="filters">
+        <form id="filterForm">
+          <div class="filter-group">
+            <label for="location">Localização:</label>
+            <select id="location">
+              <option value="">Todos</option>
+              <option value="Portugal">Portugal</option>
+              <option value="Estrangeiro">Estrangeiro</option>
+              <option value="Remoto">Remoto</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="jobType">Tipo de Emprego:</label>
+            <select id="jobType">
+              <option value="">Todos</option>
+              <option value="Tempo Integral">Full Time</option>
+              <option value="Meio Período">Part-time</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="search">Pesquisar por título:</label>
+            <input type="text" id="search" placeholder="Ex: Motorista" />
+          </div>
+          <button type="button" id="filterButton">Filtrar</button>
+        </form>
+      </section>
+      <section class="job-listings">
+        <div class="job-item" data-location="Lisboa" data-type="Tempo Integral">
+          <form action="detalhecandidatura">
+            <h2></h2>
+            <p>Candidatura Expontânea: Sim/Não</p>
+            <p>Área/Vaga:</p>
 
-                <button class="apply-btn">Saber Mais</button>
-              </form>
-            </div>
-          </section>
+            <button class="apply-btn">Saber Mais</button>
+          </form>
+        </div>
+      </section>
     </main>
 
     <footer>

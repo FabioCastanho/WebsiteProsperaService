@@ -34,7 +34,7 @@ form.addEventListener("submit", (e) => {
 
     // Redirecionar para a página principal após 3 segundos
     setTimeout(() => {
-      window.location.href = "/templates/index.html";
+      window.location.href = "/";
     }, 5000);
   }
 });
@@ -101,5 +101,7 @@ function setSuccessFor(input) {
 }
 
 function checkEmail(email) {
-  return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+  return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+    email
+  );
 }
