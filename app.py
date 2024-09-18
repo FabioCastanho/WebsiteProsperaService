@@ -1,6 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, jsonify, session, url_for
+from flask_mysqldb import MySQL
+from bson.binary import Binary
 
 app = Flask(__name__)
+app.secret_key = 'supersecretkey'
 
 @app.route('/')
 def home():
@@ -62,6 +65,14 @@ def candidaturasrecebidas():
 def pedidoscontacto():
     return render_template('pedidoscontacto.html')
 
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'ProsperaBD'
+app.config['MYSQL_UNIX_SOCKET'] = '/opt/lampp/var/mysql/mysql.sock'
+
+mysql = MySQL(app)
+
 if __name__ == '__main__':
-    app.run(debug=True, host="localhost", port=5000)
+    app.run(debug=True)
 
