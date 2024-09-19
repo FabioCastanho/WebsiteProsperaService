@@ -3,36 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Detalhes da Vaga</title>
+    <title>Detalhes da Candidatura</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/detalhevaga.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/logotipo.jpg') }}" type="image/x-icon" />
   </head>
   <body>
     <header>
       <div class="header-content">
-        <a href="admin"
-          ><img
-            class="logo"
-            src="{{ url_for('static', filename='img/LOGO3_upscayl_16x_ultrasharp.png') }}"
-            alt="logotipo"
-        /></a>
-
+        <a href="/">
+          <img class="logo" src="{{ url_for('static', filename='img/LOGO3_upscayl_16x_ultrasharp.png') }}" alt="logotipo" />
+        </a>
         <nav style="background-color: #173751; height: 80px">
           <ul>
             <li class="dropdown">
               <a class="options" href="#">Candidaturas &nbsp;&#9660;</a>
               <ul class="submenu">
                 <li><a href="criarvaga">Criar Vagas</a></li>
-                <li>
-                  <a href="candidaturasrecebidas"
-                    >Candidaturas Recebidas</a
-                  >
-                </li>
+                <li><a href="candidaturasrecebidas">Candidaturas Recebidas</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -45,25 +34,25 @@
         </nav>
       </div>
     </header>
-
     <main>
       <section class="vaga-detalhes">
-        <h2>Descrição da Vaga</h2>
+        <h2>Descrição da Candidatura</h2>
         <p></p>
 
         <h2>Informações</h2>
         <ul>
-          <li>Nome</li>
-          <li>Email</li>
-          <li>Nacionalidade</li>
+          <li>Nome: {{ candidatura[1] }}</li>
+          <li>Email: {{ candidatura[2] }}</li>
+          <li>Telefone: {{ candidatura[3] }}</li>
+          <li>Nacionalidade: {{ candidatura[4] }}</li>
+          <li>Área: {{ candidatura[5] }}</li>
+          <li>Currículo: <a href="{{ url_for('download_cv', candidatura_id=candidatura[0]) }}" download>Download CV</a></li>
         </ul>
-
-        <form action="candidaturasrecebidas">
+        <form action="{{ url_for('candidaturasrecebidas') }}">
           <button class="btn-candidatar">Voltar</button>
         </form>
       </section>
     </main>
-
     <footer>
       <p>Email: geral@prosperaservice.com</p>
       <p>&copy; 2024 Prospera Service |</p>

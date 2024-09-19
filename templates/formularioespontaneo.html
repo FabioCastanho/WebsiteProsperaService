@@ -35,65 +35,51 @@
         <h2>Vaga Espontânea</h2>
       </div>
 
-      <form id="form" class="form">
+      <form id="form" class="form" action="/formularioespontaneo" method="POST" enctype="multipart/form-data">
         <div class="form-control">
-          <label for="username">Nome Completo</label>
-          <input
-            type="text"
-            id="username"
-            placeholder="Digite o seu nome Completo..."
-          />
-          <small>Mensagem de erro</small>
+            <label for="username">Nome Completo</label>
+            <input type="text" id="username" name="username" placeholder="Digite o seu nome Completo..." />
+            <small>Mensagem de erro</small>
         </div>
-
+    
         <div class="form-control">
-          <label for="email">Email</label>
-          <input type="text" id="email" placeholder="Digite o seu email..." />
-          <small>Mensagem de erro</small>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Digite o seu email..." />
+            <small>Mensagem de erro</small>
         </div>
-
+    
         <div class="form-control">
-          <label for="telefone">Telefone</label>
-          <input
-            type="text"
-            id="telefone"
-            placeholder="Digite o seu número de telefone..."
-          />
-          <small>Mensagem de erro</small>
+            <label for="telefone">Telefone</label>
+            <input type="text" id="telefone" name="telefone" placeholder="Digite o seu número de telefone..." />
+            <small>Mensagem de erro</small>
         </div>
-
+    
         <div class="form-control">
-          <label for="nacionalidade">Nacionalidade</label>
-          <input
-            type="text"
-            id="nacionalidade"
-            placeholder="Digite a sua Nacionalidade..."
-          />
-          <small>Mensagem de erro</small>
+            <label for="nacionalidade">Nacionalidade</label>
+            <input type="text" id="nacionalidade" name="nacionalidade" placeholder="Digite a sua Nacionalidade..." />
+            <small>Mensagem de erro</small>
         </div>
-
+    
         <div class="form-control">
-          <label for="area-concorre">A que Área se está a candidatar</label>
-          <input
-            type="text"
-            id="area-concorre"
-            placeholder="Digite A que Area se está a candidatar..."
-          />
-          <small>Mensagem de erro</small>
+            <label for="area-concorre">A que Área se está a candidatar</label>
+            <input type="text" id="area-concorre" name="area-concorre" placeholder="Digite A que Area se está a candidatar..." />
+            <small>Mensagem de erro</small>
         </div>
-
+    
         <div class="form-control">
-          <label for="CV">Coloque aqui o seu Currículo</label>
-          <input type="file" id="CV" />
-          <small>Mensagem de erro</small>
+            <label for="CV">Coloque aqui o seu Currículo</label>
+            <input type="file" id="CV" name="CV" />
+            <small>Mensagem de erro</small>
         </div>
+    
         <button type="submit">Enviar</button>
-      </form>
+    </form>
+    
       <form id="form" class="form" action="/">
         <button class="botao-voltar" type="submit">Voltar</button>
       </form>
     </div>
 
-    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+   <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
   </body>
 </html>

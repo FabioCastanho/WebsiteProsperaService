@@ -9,33 +9,10 @@ form.addEventListener("submit", (e) => {
 
   if (formIsValid) {
     // Alterar o conteúdo do container para a mensagem de sucesso
-    container.innerHTML = `
-    <div class="mensagem-sucesso" style="
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 50px;
-        background-color: #e8f5e9;
-        border: 2px solid #4caf50;
-        border-radius: 15px;
-        text-align: center;
-        color: #2e7d32;
-      ">
-        <i class="fas fa-check-circle" style="font-size: 50px; color: #4caf50; margin-bottom: 20px;"></i>
-        <h2 style="font-family: 'Poppins', sans-serif; font-size: 28px; font-weight: bold; margin-bottom: 10px;">
-          Candidatura Efetuada com Sucesso!
-        </h2>
-        <p style="font-family: 'Poppins', sans-serif; font-size: 18px; margin-bottom: 20px;">
-          Agradecemos pela sua candidatura. Em breve entraremos em contacto.
-        </p>
-      </div>
-    `;
 
-    // Redirecionar para a página principal após 3 segundos
-    setTimeout(() => {
-      window.location.href = "/";
-    }, 5000);
+    form.submit();
+
+    
   }
 });
 
