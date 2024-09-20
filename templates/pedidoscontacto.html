@@ -76,14 +76,15 @@
       </section>
 
       <section class="job-listings">
-        <div class="job-item" data-location="Lisboa" data-type="Tempo Integral">
-          <form action="detalhepedido">
-            <h2>EMPRESA X</h2>
-            <p>Área:</p>
-
+        {% for pedido in pedidos %}
+        <div class="job-item">
+          <form action="{{ url_for('detalhepedido', pedido_id=pedido[0]) }}" method="get">            
+            <h2>{{ pedido[2] }}</h2>
+            <p>Área: {{ pedido[5] }}</p>
             <button class="apply-btn">Saber Mais</button>
           </form>
         </div>
+        {% endfor %}
       </section>
     </main>
 

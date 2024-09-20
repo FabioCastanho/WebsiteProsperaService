@@ -9,9 +9,28 @@ app.secret_key = 'supersecretkey'
 def home():
     return render_template('index.html')
 
-@app.route('/contactos')
+@app.route('/contactos', methods=['GET', 'POST'])
 def contactos():
+    if request.method == 'POST':
+        nome_contacto = request.form['nome-contacto']
+        nome_empresa = request.form['nome-empresa']
+        email = request.form['email']
+        telefone = request.form['telefone']
+        area_atividade = request.form['area-atividade']
+        mensagem = request.form['message']
+        
+        cur = mysql.connection.cursor()
+        cur.execute("""
+            INSERT INTO t_pedido (nome_contacto, nome_empresa, email, telefone, area_actividade, mensagem)
+            VALUES (%s, %s, %s, %s, %s, %s)
+        """, (nome_contacto, nome_empresa, email, telefone, area_atividade, mensagem))
+        mysql.connection.commit()
+        cur.close()
+
+        return render_template('contactos.html', success=True)
+
     return render_template('contactos.html')
+
 
 @app.route('/formularioespontaneo', methods=['GET', 'POST'])
 def formularioespontaneo():
@@ -76,9 +95,21 @@ def detalhecandidatura(candidatura_id):
 
     return render_template('detalhecandidatura.html', candidatura = candidatura)
 
-@app.route('/detalhepedido')
-def detalhepedido():
-    return render_template('detalhepedido.html')
+@app.route('/detalhepedido/<int:pedido_id>')
+def detalhepedido(pedido_id):
+    cur = mysql.connection.cursor()
+    cur.execute("""
+        SELECT id, nome_contacto, nome_empresa, email, telefone, area_actividade, mensagem 
+        FROM t_pedido
+        WHERE id = %s
+    """, (pedido_id,))
+    pedido = cur.fetchone()
+    cur.close()
+
+    if pedido is None:
+        return "Pedido não encontrada", 404
+
+    return render_template('detalhepedido.html', pedido = pedido)
 
 @app.route('/detalhevaga')
 def detalhevaga():
@@ -99,7 +130,12 @@ def candidaturasrecebidas():
 
 @app.route('/pedidoscontacto')
 def pedidoscontacto():
-    return render_template('pedidoscontacto.html')
+    cur = mysql.connection.cursor()
+    cur.execute("Select id, nome_contacto, nome_empresa, email, telefone, area_actividade, mensagem FROM t_pedido")
+    pedidos = cur.fetchall()
+    cur.close()
+
+    return render_template('pedidoscontacto.html', pedidos = pedidos)
 
 @app.route('/download_cv/<int:candidatura_id>')
 def download_cv(candidatura_id):
