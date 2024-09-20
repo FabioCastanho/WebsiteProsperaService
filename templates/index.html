@@ -4,10 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prospera Service</title>
-    
+
     <!-- Link para o CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
-    
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+
     <!-- Fonte Google -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -15,7 +18,11 @@
     />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logotipo.jpg') }}" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='img/logotipo.jpg') }}"
+      type="image/x-icon"
+    />
   </head>
   <body>
     <!-- Cabeçalho -->
@@ -23,7 +30,11 @@
       <div class="header-content">
         <!-- Link para a logo -->
         <a href="/">
-          <img class="logo" src="{{ url_for('static', filename='img/LOGO3_upscayl_16x_ultrasharp.png') }}" alt="logotipo" />
+          <img
+            class="logo"
+            src="{{ url_for('static', filename='img/LOGO3_upscayl_16x_ultrasharp.png') }}"
+            alt="logotipo"
+          />
         </a>
 
         <!-- Navegação -->
@@ -33,7 +44,9 @@
               <a class="options" href="#">Candidaturas &nbsp;&#9660;</a>
               <ul class="submenu">
                 <li><a href="vagas">Vagas Disponíveis</a></li>
-                <li><a href="formularioespontaneo">Candidatura Espontânea</a></li>
+                <li>
+                  <a href="formularioespontaneo">Candidatura Espontânea</a>
+                </li>
               </ul>
             </li>
             <li class="dropdown">
@@ -55,7 +68,10 @@
         <div class="grid">
           <!-- Indústria -->
           <div class="especialidade">
-            <img src="{{ url_for('static', filename='img/technical-support.png') }}" alt="Técnica" />
+            <img
+              src="{{ url_for('static', filename='img/technical-support.png') }}"
+              alt="Técnica"
+            />
             <h3>Técnica</h3>
             <p>
               Especialistas no recrutamento de profissionais qualificados para a
@@ -65,7 +81,10 @@
 
           <!-- Logística -->
           <div class="especialidade">
-            <img src="{{ url_for('static', filename='img/trolley_4033037.png') }}" alt="Logística" />
+            <img
+              src="{{ url_for('static', filename='img/trolley_4033037.png') }}"
+              alt="Logística"
+            />
             <h3>Logística</h3>
             <p>
               Recrutamos e selecionamos operadores de produção, líderes de
@@ -75,7 +94,10 @@
 
           <!-- Tecnologia -->
           <div class="especialidade">
-            <img src="{{ url_for('static', filename='img/monitor_957463.png') }}" alt="Tecnologia" />
+            <img
+              src="{{ url_for('static', filename='img/monitor_957463.png') }}"
+              alt="Tecnologia"
+            />
             <h3>Tecnologia</h3>
             <p>
               Recrutamento de profissionais certificados nas áreas tecnológicas.
@@ -84,7 +106,10 @@
 
           <!-- Serviços -->
           <div class="especialidade">
-            <img src="{{ url_for('static', filename='img/cloud-computing.png') }}" alt="Serviços" />
+            <img
+              src="{{ url_for('static', filename='img/cloud-computing.png') }}"
+              alt="Serviços"
+            />
             <h3>Serviços</h3>
             <p>
               Ampla gama de serviços prestados às empresas em diversas áreas.
@@ -105,10 +130,14 @@
     <!-- Seção de Candidaturas -->
     <section class="candidaturas">
       <div class="botoes-container">
-        <a href="vagas" class="botao-principal">VER TODAS AS OFERTAS DISPONÍVEIS</a>
+        <a href="vagas" class="botao-principal"
+          >VER TODAS AS OFERTAS DISPONÍVEIS</a
+        >
         <div>
           <span class="texto-ou">ou</span>
-          <a href="formularioEspontaneo" class="botao-secundario">ENVIAR CANDIDATURA ESPONTÂNEA</a>
+          <a href="formularioEspontaneo" class="botao-secundario"
+            >ENVIAR CANDIDATURA ESPONTÂNEA</a
+          >
         </div>
       </div>
     </section>
