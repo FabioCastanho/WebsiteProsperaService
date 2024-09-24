@@ -4,56 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Detalhes da Vaga</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/detalhevaga.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/main.css') }}"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="shortcut icon"
-      href="{{ url_for('static', filename='img/logotipo.jpg') }}"
-      type="image/x-icon"
-    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/detalhevaga.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vagas.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logotipo.jpg') }}" type="image/x-icon" />
   </head>
   <body>
     <header>
       <div class="header-content">
-        <a href="/"
-          ><img
-            class="logo"
-            src="{{ url_for('static', filename='img/LOGO3_upscayl_16x_ultrasharp.png') }}"
-            alt="logotipo"
-        /></a>
-
+        <a href="/">
+          <img class="logo" src="{{ url_for('static', filename='img/LOGO3_upscayl_16x_ultrasharp.png') }}" alt="logotipo" />
+        </a>
         <nav style="background-color: #173751; height: 80px">
           <ul>
             <li class="dropdown">
               <a class="options" href="#">Candidaturas &nbsp;&#9660;</a>
               <ul class="submenu">
-                <li><a href="vagas">Vagas Disponíveis</a></li>
-                <li>
-                  <a href="formularioespontaneo">Candidatura Espontânea</a>
-                </li>
+                <li><a href="criarvaga">Criar Vagas</a></li>
+                <li><a href="candidaturasrecebidas">Candidaturas Recebidas</a></li>
               </ul>
             </li>
             <li class="dropdown">
               <a class="options" href="#">Empresas &nbsp;&#9660;</a>
               <ul class="submenu">
-                <li><a href="servicos">Serviços</a></li>
+                <li><a href="pedidoscontacto">Pedidos Contacto</a></li>
               </ul>
-            </li>
-            <li>
-              <a class="options" href="contactos">Contactos</a>
-            </li>
-            <li>
-              <a class="options" href="sobrenos">Sobre nós</a>
             </li>
           </ul>
         </nav>
@@ -62,37 +37,16 @@
 
     <main>
       <section class="vaga-detalhes">
-        <h1></h1>
-        <p class="localizacao">Localização:</p>
-        <p class="tipo-contrato">Tipo de Contrato:</p>
-
-        <h2>Descrição da Vaga</h2>
-        <p></p>
-
-        <h2>Responsabilidades</h2>
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-
-        <h2>Requisitos</h2>
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-
-        <h2>Benefícios</h2>
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-        <form action="formulariovaga">
-          <button class="btn-candidatar">Candidatar-se</button>
-        </form>
+        <h1>{{ vaga[1] }}</h1>
+        <h2>Descrição:</h2><p> {{ vaga[2] }}</p><br>
+        <p>Área:<br> {{ vaga[7] }}</p><br>
+        <p>Requisitos:<br> {{ vaga[3] }}</p><br>
+        <p>Benefícios:<br> {{ vaga[4] }}</p><br>
+        <p>Localização:<br> {{ vaga[5] }}</p><br>
+        <p>Tipo de Contrato:<br> {{ vaga[6] }}</p><br>
+        <form action="{{ url_for('formulariovaga', vaga_id=vaga[0]) }}" method="get">
+          <button class="apply-btn">Candidatar-se</button>
+        </form>        
       </section>
     </main>
 

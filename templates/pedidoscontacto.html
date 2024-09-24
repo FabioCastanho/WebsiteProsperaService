@@ -49,31 +49,15 @@
 
     <main>
       <section class="filters">
-        <form id="filterForm">
+        <form action="{{ url_for('pedidoscontacto') }}" method="get">
           <div class="filter-group">
-            <label for="location">Localização:</label>
-            <select id="location">
-              <option value="">Todos</option>
-              <option value="Portugal">Portugal</option>
-              <option value="Estrangeiro">Estrangeiro</option>
-              <option value="Remoto">Remoto</option>
-            </select>
+            <label for="search">Pesquisar por Nome da Empresa ou Área:</label>
+            <input type="text" id="search" name="search" placeholder="Ex: Prospera/TI" value="{{ request.args.get('search', '') }}" />
           </div>
-          <div class="filter-group">
-            <label for="jobType">Tipo de Emprego:</label>
-            <select id="jobType">
-              <option value="">Todos</option>
-              <option value="Tempo Integral">Full Time</option>
-              <option value="Meio Período">Part-time</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <label for="search">Pesquisar por título:</label>
-            <input type="text" id="search" placeholder="Ex: Motorista" />
-          </div>
-          <button type="button" id="filterButton">Filtrar</button>
+          <button type="submit">Filtrar</button>
         </form>
       </section>
+      
 
       <section class="job-listings">
         {% for pedido in pedidos %}

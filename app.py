@@ -63,17 +63,63 @@ def sobrenos():
 def servicos():
     return render_template('servicos.html')
 
-@app.route('/vagas')
+@app.route('/vagas', methods=['GET'])
 def vagas():
-    return render_template('vagas.html')
+    search = request.args.get('search', '')
+    location = request.args.get('location', '')
+    job_type = request.args.get('jobType', '')
+
+    query = "SELECT * FROM t_vaga WHERE 1=1"
+    params = []
+
+    if search:
+        query += " AND (titulo LIKE %s OR area LIKE %s)"
+        params.extend(['%' + search + '%', '%' + search + '%'])
+
+    if location:
+        query += " AND localizacao = %s"
+        params.append(location)
+
+    if job_type:
+        query += " AND tipo_contrato = %s"
+        params.append(job_type)
+
+    cur = mysql.connection.cursor()
+    cur.execute(query, params)
+    vagas = cur.fetchall()
+    cur.close()
+
+    return render_template('vagas.html', vagas=vagas)
+
 
 @app.route('/admin')
 def admin():
     return render_template('admin.html')
 
-@app.route('/criarvaga')
+@app.route('/criarvaga', methods=['GET', 'POST'])
 def criarvaga():
+    if request.method == 'POST':
+        titulo = request.form['titulo']
+        area = request.form['area']
+        descricao = request.form['descricao']
+        requisitos = request.form['requisitos']
+        beneficios = request.form['beneficios']
+        localizacao = request.form['localizacao']
+        tipo_contrato = request.form['tipo_contrato']
+        area = request.form['area']
+
+        cur = mysql.connection.cursor()
+        cur.execute("""
+            INSERT INTO t_vaga (titulo, area, descricao, requisitos, beneficios, localizacao, tipo_contrato)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
+        """, (titulo, area, descricao, requisitos, beneficios, localizacao, tipo_contrato))
+        mysql.connection.commit()
+        cur.close()
+
+        return redirect(url_for('criarvaga'))
+
     return render_template('criarvaga.html')
+
 
 @app.route('/loginadmin')
 def loginadmn():
@@ -111,31 +157,109 @@ def detalhepedido(pedido_id):
 
     return render_template('detalhepedido.html', pedido = pedido)
 
-@app.route('/detalhevaga')
-def detalhevaga():
-    return render_template('detalhevaga.html')
-
-@app.route('/formulariovaga')
-def formulariovaga():
-    return render_template('formulariovaga.html')
-
-@app.route('/candidaturasrecebidas')
-def candidaturasrecebidas():
+@app.route('/detalhevaga/<int:vaga_id>', methods=['GET'])
+def detalhevaga(vaga_id):
     cur = mysql.connection.cursor()
-    cur.execute("Select id, nome, email, telefone, Nacionalidade, area FROM t_candidaturaexpontanea")
+    cur.execute("SELECT * FROM t_vaga WHERE id = %s", (vaga_id,))
+    vaga = cur.fetchone()
+    cur.close()
+
+    if vaga:
+        return render_template('detalhevaga.html', vaga=vaga)
+    else:
+        return "Vaga não encontrada", 404
+
+
+@app.route('/formulariovaga/<int:vaga_id>', methods=['GET', 'POST'])
+def formulariovaga(vaga_id):
+    if request.method == 'POST':
+        nome = request.form['username']
+        email = request.form['email']
+        telefone = request.form['telefone']
+        nacionalidade = request.form['nacionalidade']
+        cv = request.files['CV'].read()
+
+        cur = mysql.connection.cursor()
+        cur.execute("""
+            INSERT INTO t_candidaturavaga (nome, email, telefone, Nacionalidade, cv, id_vaga)
+            VALUES (%s, %s, %s, %s, %s, %s)
+        """, (nome, email, telefone, nacionalidade, cv, vaga_id))
+
+        mysql.connection.commit()
+        cur.close()
+
+        return redirect(url_for('vagas'))
+
+    return render_template('formulariovaga.html', vaga_id=vaga_id)
+
+
+@app.route('/candidaturasrecebidas', methods=['GET'])
+def candidaturasrecebidas():
+
+    location = request.args.get('location', '')
+    job_type = request.args.get('jobType', '')
+    search = request.args.get('search', '')
+    tipo_candidatura = request.args.get('tipo_candidatura', 'todas')  # 'todas', 'vaga', 'espontanea'
+
+    query = """
+        SELECT 'espontanea' AS tipo, id, nome, email, telefone, Nacionalidade, area, NULL AS vaga_titulo 
+        FROM t_candidaturaexpontanea
+        UNION
+        SELECT 'vaga' AS tipo, cv.id, cv.nome, cv.email, cv.telefone, cv.Nacionalidade, v.area, v.titulo AS vaga_titulo
+        FROM t_candidaturavaga cv
+        JOIN t_vaga v ON cv.id_vaga = v.id
+        WHERE 1 = 1
+    """
+    
+    params = []
+
+    if search:
+        query += " AND (nome LIKE %s OR email LIKE %s)"
+        params.extend(['%' + search + '%', '%' + search + '%'])
+
+    if location:
+        query += " AND (Nacionalidade = %s)"
+        params.append(location)
+
+    if job_type:
+        query += " AND (v.tipo_contrato = %s)"
+        params.append(job_type)
+
+    if tipo_candidatura == 'espontanea':
+        query = query.replace("UNION", "WHERE tipo = 'espontanea'")
+    elif tipo_candidatura == 'vaga':
+        query = query.replace("UNION", "WHERE tipo = 'vaga'")
+
+    cur = mysql.connection.cursor()
+    cur.execute(query, params)
     candidaturas = cur.fetchall()
     cur.close()
 
-    return render_template('candidaturasrecebidas.html', candidaturas = candidaturas)
+    return render_template('candidaturasrecebidas.html', candidaturas=candidaturas)
+
 
 @app.route('/pedidoscontacto')
 def pedidoscontacto():
+    search_query = request.args.get('search', '') 
+
     cur = mysql.connection.cursor()
-    cur.execute("Select id, nome_contacto, nome_empresa, email, telefone, area_actividade, mensagem FROM t_pedido")
+
+    if search_query:
+        query = """
+            SELECT id, nome_contacto, nome_empresa, email, telefone, area_actividade, mensagem 
+            FROM t_pedido 
+            WHERE nome_empresa LIKE %s OR area_actividade LIKE %s
+        """
+        search_term = f"%{search_query}%"  
+        cur.execute(query, (search_term, search_term))
+    else:
+        cur.execute("SELECT id, nome_contacto, nome_empresa, email, telefone, area_actividade, mensagem FROM t_pedido")
+
     pedidos = cur.fetchall()
     cur.close()
 
-    return render_template('pedidoscontacto.html', pedidos = pedidos)
+    return render_template('pedidoscontacto.html', pedidos=pedidos)
+
 
 @app.route('/download_cv/<int:candidatura_id>')
 def download_cv(candidatura_id):

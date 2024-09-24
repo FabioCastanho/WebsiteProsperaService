@@ -1,109 +1,92 @@
 <!DOCTYPE html>
 <html lang="pt">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vagas Disponíveis</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/vagas.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/main.css') }}"
-    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vagas.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="shortcut icon"
-      href="{{ url_for('static', filename='img/logotipo.jpg') }}"
-      type="image/x-icon"
-    />
-  </head>
-  <body>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logotipo.jpg') }}" type="image/x-icon" />
+</head>
+<body>
     <header>
-      <div class="header-content">
-        <a href="/"
-          ><img
-            class="logo"
-            src="{{ url_for('static', filename='img/LOGO3_upscayl_16x_ultrasharp.png') }}"
-            alt="logotipo"
-        /></a>
-
-        <nav style="background-color: #173751; height: 80px">
-          <ul>
-            <li class="dropdown">
-              <a class="options" href="#">Candidaturas &nbsp;&#9660;</a>
-              <ul class="submenu">
-                <li><a href="vagas">Vagas Disponíveis</a></li>
-                <li>
-                  <a href="formularioespontaneo">Candidatura Espontânea</a>
-                </li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a class="options" href="#">Empresas &nbsp;&#9660;</a>
-              <ul class="submenu">
-                <li><a href="servicos">Serviços</a></li>
-              </ul>
-            </li>
-            <li>
-              <a class="options" href="contactos">Contactos</a>
-            </li>
-            <li>
-              <a class="options" href="sobrenos">Sobre nós</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+        <div class="header-content">
+            <a href="/">
+                <img class="logo" src="{{ url_for('static', filename='img/LOGO3_upscayl_16x_ultrasharp.png') }}" alt="logotipo" />
+            </a>
+            <nav style="background-color: #173751; height: 80px">
+                <ul>
+                    <li class="dropdown">
+                        <a class="options" href="#">Candidaturas &nbsp;&#9660;</a>
+                        <ul class="submenu">
+                            <li><a href="vagas">Vagas Disponíveis</a></li>
+                            <li><a href="formularioespontaneo">Candidatura Espontânea</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="options" href="#">Empresas &nbsp;&#9660;</a>
+                        <ul class="submenu">
+                            <li><a href="servicos">Serviços</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="options" href="contactos">Contactos</a></li>
+                    <li><a class="options" href="sobrenos">Sobre nós</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <section class="filters">
-      <form id="filterForm">
-        <div class="filter-group">
-          <label for="location">Localização:</label>
-          <select id="location">
-            <option value="">Todos</option>
-            <option value="Portugal">Portugal</option>
-            <option value="Estrangeiro">Estrangeiro</option>
-            <option value="Remoto">Remoto</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <label for="jobType">Tipo de Emprego:</label>
-          <select id="jobType">
-            <option value="">Todos</option>
-            <option value="Tempo Integral">Full Time</option>
-            <option value="Meio Período">Part-time</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <label for="search">Pesquisar por título:</label>
-          <input type="text" id="search" placeholder="Ex: Motorista" />
-        </div>
-        <button type="button" id="filterButton">Filtrar</button>
+      <form action="{{ url_for('vagas') }}" method="get" id="filterForm">
+          <div class="filter-group">
+              <label for="search">Pesquisar por Título da Vaga ou Área:</label>
+              <input type="text" id="search" name="search" placeholder="Ex: Desenvolvedor" value="{{ request.args.get('search', '') }}" />
+          </div>
+          <div class="filter-group">
+              <label for="location">Localização:</label>
+              <select id="location" name="location">
+                  <option value="">Todos</option>
+                  <option value="Portugal">Portugal</option>
+                  <option value="Estrangeiro">Estrangeiro</option>
+                  <option value="Remoto">Remoto</option>
+              </select>
+          </div>
+          <div class="filter-group">
+              <label for="jobType">Tipo de Emprego:</label>
+              <select id="jobType" name="jobType">
+                  <option value="">Todos</option>
+                  <option value="Full Time">Full Time</option>
+                  <option value="Part-time">Part-time</option>
+              </select>
+          </div>
+          <button type="submit">Filtrar</button>
       </form>
-    </section>
+  </section>
+  
 
     <section class="job-listings">
-      <div class="job-item" data-location="Lisboa" data-type="Tempo Integral">
-        <form action="detalhevaga">
-          <h2></h2>
-          <p>Localização:</p>
-          <p>Tipo:</p>
-          <button class="apply-btn">Saber Mais</button>
-        </form>
-      </div>
+        {% for vaga in vagas %}
+        <div class="job-item">
+            <form action="{{ url_for('detalhevaga', vaga_id=vaga[0]) }}" method="get">            
+                <h2>{{ vaga[1] }}</h2>
+                <p>Área: {{ vaga[7] }}</p>
+                <p>Localização: {{ vaga[5] }}</p>
+                <p>Tipo de Contrato: {{ vaga[6] }}</p>
+                <button class="apply-btn">Saber Mais</button>
+            </form>
+        </div>
+        {% else %}
+        <p>Nenhuma vaga encontrada.</p>
+        {% endfor %}
     </section>
 
     <footer>
-      <p>Email: geral@prosperaservice.com</p>
-      <p>&copy; 2024 Prospera Service |</p>
+        <p>Email: geral@prosperaservice.com</p>
+        <p>&copy; 2024 Prospera Service |</p>
     </footer>
 
     <script src="{{ url_for('static', filename='js/vagas.js') }}"></script>
-  </body>
+</body>
 </html>

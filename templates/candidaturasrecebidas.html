@@ -38,41 +38,60 @@
     <main>
       <section class="filters">
         <form id="filterForm">
+          <!-- Filtros existentes -->
           <div class="filter-group">
             <label for="location">Localização:</label>
-            <select id="location">
+            <select id="location" name="location">
               <option value="">Todos</option>
               <option value="Portugal">Portugal</option>
               <option value="Estrangeiro">Estrangeiro</option>
               <option value="Remoto">Remoto</option>
             </select>
           </div>
+        
           <div class="filter-group">
             <label for="jobType">Tipo de Emprego:</label>
-            <select id="jobType">
+            <select id="jobType" name="jobType">
               <option value="">Todos</option>
               <option value="Tempo Integral">Full Time</option>
               <option value="Meio Período">Part-time</option>
             </select>
           </div>
+        
           <div class="filter-group">
-            <label for="search">Pesquisar por título:</label>
-            <input type="text" id="search" placeholder="Ex: Motorista" />
+            <label for="search">Pesquisar por nome ou email:</label>
+            <input type="text" id="search" name="search" placeholder="Ex: João">
           </div>
-          <button type="button" id="filterButton">Filtrar</button>
+        
+          <div class="filter-group">
+            <label for="tipo_candidatura">Tipo de Candidatura:</label>
+            <select id="tipo_candidatura" name="tipo_candidatura">
+              <option value="todas">Todas</option>
+              <option value="vaga">Candidaturas a Vagas</option>
+              <option value="espontanea">Candidaturas Espontâneas</option>
+            </select>
+          </div>
+        
+          <button type="submit" id="filterButton">Filtrar</button>
         </form>
+        
       </section>
       <section class="job-listings">
         {% for candidatura in candidaturas %}
         <div class="job-item">
-          <form action="{{ url_for('detalhecandidatura', candidatura_id=candidatura[0]) }}" method="get">            <h2>{{ candidatura[1] }}</h2>
-            <p>Candidatura Expontânea: Sim/Não</p>
-            <p>Área/Vaga: {{ candidatura[5] }}</p>
+          <h2>{{ candidatura[2] }}</h2>
+          <p>Email: {{ candidatura[3] }}</p>
+          <p>Telefone: {{ candidatura[4] }}</p>
+          <p>Nacionalidade: {{ candidatura[5] }}</p>
+          <p>Candidatura: {{ 'Espontânea' if candidatura[0] == 'espontanea' else 'Vaga - ' + candidatura[7] }}</p>
+      
+          <form action="{{ url_for('detalhecandidatura', candidatura_id=candidatura[1]) }}" method="get">
             <button class="apply-btn">Saber Mais</button>
           </form>
         </div>
         {% endfor %}
       </section>
+      
     </main>
     <footer>
       <p>Email: geral@prosperaservice.com</p>

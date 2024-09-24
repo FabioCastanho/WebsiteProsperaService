@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/detalhevaga.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
       rel="stylesheet"
     />
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/logotipo.jpg') }}" type="image/x-icon" />
@@ -15,12 +15,9 @@
   <body>
     <header>
       <div class="header-content">
-        <!-- Link para a página principal com a logo -->
         <a href="/">
           <img class="logo" src="{{ url_for('static', filename='img/LOGO3_upscayl_16x_ultrasharp.png') }}" alt="logotipo" />
         </a>
-
-        <!-- Navegação -->
         <nav style="background-color: #173751; height: 80px">
           <ul>
             <li class="dropdown">
@@ -43,44 +40,60 @@
 
     <main>
       <section class="vaga-detalhes">
-        <h1></h1>
-        <p class="localizacao">Localização: 
-            <select id="location">
-                <option value="">Todos</option>
-                <option value="Portugal">Portugal</option>
-                <option value="Estrangeiro">Estrangeiro</option>
-                <option value="Remoto">Remoto</option>
-              </select>
-        </p>
-        <p class="tipo-contrato">Tipo de Contrato:
-            <select id="jobType">
-                <option value="">Todos</option>
-                <option value="Tempo Integral">Full Time</option>
-                <option value="Meio Período">Part-time</option>
+        <form action="/criarvaga" method="POST">
+          <h2>Título da Vaga</h2>
+          <p>
+            <input
+              type="text"
+              name="titulo"
+              style="text-align: center; display: block; margin-right: auto; margin-left: auto; width: 500px; height: 50px; font-size: 35px;"
+              required
+            />
+          </p>
+          <h2>Área</h2>
+          <p>
+            <input
+              type="text"
+              name="area"
+              style="text-align: center; display: block; margin-right: auto; margin-left: auto; width: 250px; height: 25px; font-size: 25px;"
+              required
+            />
+          </p>
+
+          <h2>Descrição</h2>
+          <p>
+            <textarea name="descricao" rows="15" cols="90" required></textarea>
+          </p>
+
+          <h2>Requisitos</h2>
+          <p>
+            <textarea name="requisitos" rows="15" cols="90" required></textarea>
+          </p>
+
+          <h2>Benefícios</h2>
+          <p>
+            <textarea name="beneficios" rows="15" cols="90" required></textarea>
+          </p>
+
+          <h2>Localização</h2>
+          <p>
+            <select name="localizacao" required>
+              <option value="Portugal">Portugal</option>
+              <option value="Estrangeiro">Estrangeiro</option>
+              <option value="Remoto">Remoto</option>
             </select>
-        </p>
+          </p>
 
-        <h2>Título da Vaga</h2>
-        <p>
-            <input style="display: block; margin-right: auto; margin-left: auto; width: 500px; height: 50px; font-size: 35px;" type="text" id="titulo"/>
-        </p>
+          <h2>Tipo de Contrato</h2>
+          <p>
+            <select name="tipo_contrato" required>
+              <option value="Full Time">Full Time</option>
+              <option value="Part-time">Part-time</option>
+            </select>
+          </p>
 
-        <h2>Descrição</h2>
-        <ul>
-            <textarea name="descricao" id="descricao" rows="15" cols="86"></textarea>
-        </ul>
-
-        <h2>Requisitos</h2>
-        <ul>
-            <textarea name="descricao" id="descricao" rows="15" cols="86"></textarea>
-        </ul>
-
-        <h2>Benefícios</h2>
-        <ul>
-            <textarea name="descricao" id="descricao" rows="15" cols="86"></textarea>
-        </ul>
-
-        <button class="btn-candidatar">Criar Vaga</button>
+          <button type="submit" class="btn-candidatar">Criar Vaga</button>
+        </form>
       </section>
     </main>
 
