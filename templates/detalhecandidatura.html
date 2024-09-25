@@ -41,12 +41,24 @@
 
         <h2>Informações</h2>
         <ul>
-          <li>Nome: {{ candidatura[1] }}</li>
-          <li>Email: {{ candidatura[2] }}</li>
-          <li>Telefone: {{ candidatura[3] }}</li>
-          <li>Nacionalidade: {{ candidatura[4] }}</li>
-          <li>Área: {{ candidatura[5] }}</li>
-          <li>Currículo: <a href="{{ url_for('download_cv', candidatura_id=candidatura[0]) }}" download>Download CV</a></li>
+          {% if candidatura[0] == 'espontanea' %}
+          <li><strong>Nome:</strong> {{ candidatura[1] }}</li>
+          <li><strong>Email:</strong> {{ candidatura[2] }}</li>
+          <li><strong>Telefone:</strong> {{ candidatura[3] }}</li>
+          <li><strong>Nacionalidade:</strong> {{ candidatura[4] }}</li>
+          <li><strong>Área:</strong> {{ candidatura[5] }}</li>
+          <li><strong>Currículo:</strong> 
+              <a href="{{ url_for('download_cv', candidatura_id=candidatura[0]) }}" download>Download CV</a>
+          </li>
+          {% else %}
+            <li><strong>Nome completo:</strong> {{ candidatura[1] }}</li>
+            <li><strong>Email:</strong> {{ candidatura[2] }}</li>
+            <li><strong>Telefone:</strong> {{ candidatura[3] }}</li>
+            <li><strong>Vaga a que se candidatou:</strong> {{ candidatura[5] }}</li> <!-- Nome da vaga -->
+            <li><strong>Currículo:</strong> 
+                <a href="{{ url_for('download_cv_vaga', candidatura_id=candidatura[0]) }}" download>Download CV</a>
+            </li>
+          {% endif %}
         </ul>
         <form action="{{ url_for('candidaturasrecebidas') }}">
           <button class="btn-candidatar">Voltar</button>
