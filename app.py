@@ -307,7 +307,7 @@ def download_cv(candidatura_id):
     return send_file(
         io.BytesIO(cv_data),
         as_attachment=True,
-        download_name="CV",
+        download_name="CV.pdf",
         mimetype='application/pdf'
     )
 
@@ -329,7 +329,7 @@ def download_cv_vaga(candidatura_id):
     return send_file(
         io.BytesIO(cv_data),
         as_attachment=True,
-        download_name="CV_Vaga.pdf",  # Nome do arquivo baixado
+        download_name="CV_Vaga.pdf",
         mimetype='application/pdf'
     )
 
