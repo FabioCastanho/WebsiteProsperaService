@@ -129,10 +129,11 @@ def loginadmn():
 def detalhecandidatura(candidatura_id):
     cur = mysql.connection.cursor()
     cur.execute("""
-        SELECT id, nome, email, telefone, Nacionalidade, area, cv
+        SELECT 'espontanea' AS tipo, id, nome, email, telefone, Nacionalidade, area, cv
         FROM t_candidaturaexpontanea
         WHERE id = %s
     """, (candidatura_id,))
+
     candidatura = cur.fetchone()
     cur.close()
 
