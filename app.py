@@ -141,6 +141,27 @@ def detalhecandidatura(candidatura_id):
 
     return render_template('detalhecandidatura.html', candidatura = candidatura)
 
+@app.route('/detalhecandidaturavaga/<int:candidatura_id>')
+def detalhecandidaturavaga(candidatura_id):
+    cur = mysql.connection.cursor()
+
+    cur.execute("""
+        SELECT c.id, c.nome, c.email, c.telefone, c.cv, v.titulo AS nome_vaga
+        FROM t_candidaturavaga c
+        JOIN t_vaga v ON c.id_vaga = v.id
+        WHERE c.id = %s
+    """, (candidatura_id,))
+    
+    candidatura = cur.fetchone()
+    cur.close()
+
+    if candidatura is None:
+        return "Candidatura não encontrada", 404
+
+    return render_template('detalhecandidatura.html', candidatura=candidatura)
+
+
+
 @app.route('/detalhepedido/<int:pedido_id>')
 def detalhepedido(pedido_id):
     cur = mysql.connection.cursor()
@@ -195,40 +216,47 @@ def formulariovaga(vaga_id):
 
 @app.route('/candidaturasrecebidas', methods=['GET'])
 def candidaturasrecebidas():
-
     location = request.args.get('location', '')
     job_type = request.args.get('jobType', '')
     search = request.args.get('search', '')
-    tipo_candidatura = request.args.get('tipo_candidatura', 'todas')  # 'todas', 'vaga', 'espontanea'
+    tipo_candidatura = request.args.get('tipo_candidatura', 'todas')  
 
-    query = """
+    query_espontanea = """
         SELECT 'espontanea' AS tipo, id, nome, email, telefone, Nacionalidade, area, NULL AS vaga_titulo 
         FROM t_candidaturaexpontanea
-        UNION
+        WHERE 1=1
+    """
+    
+    query_vaga = """
         SELECT 'vaga' AS tipo, cv.id, cv.nome, cv.email, cv.telefone, cv.Nacionalidade, v.area, v.titulo AS vaga_titulo
         FROM t_candidaturavaga cv
         JOIN t_vaga v ON cv.id_vaga = v.id
-        WHERE 1 = 1
+        WHERE 1=1
     """
-    
+
     params = []
 
     if search:
-        query += " AND (nome LIKE %s OR email LIKE %s)"
+        query_espontanea += " AND (nome LIKE %s OR email LIKE %s)"
+        query_vaga += " AND (cv.nome LIKE %s OR cv.email LIKE %s)"
         params.extend(['%' + search + '%', '%' + search + '%'])
 
     if location:
-        query += " AND (Nacionalidade = %s)"
+        query_espontanea += " AND (Nacionalidade = %s)"
+        query_vaga += " AND (cv.Nacionalidade = %s)"
         params.append(location)
 
     if job_type:
-        query += " AND (v.tipo_contrato = %s)"
+        query_vaga += " AND (v.tipo_contrato = %s)"
         params.append(job_type)
 
+    # Filtra por tipo de candidatura
     if tipo_candidatura == 'espontanea':
-        query = query.replace("UNION", "WHERE tipo = 'espontanea'")
+        query = query_espontanea
     elif tipo_candidatura == 'vaga':
-        query = query.replace("UNION", "WHERE tipo = 'vaga'")
+        query = query_vaga
+    else:
+        query = f"{query_espontanea} UNION {query_vaga}"
 
     cur = mysql.connection.cursor()
     cur.execute(query, params)
@@ -282,6 +310,29 @@ def download_cv(candidatura_id):
         download_name="CV",
         mimetype='application/pdf'
     )
+
+@app.route('/download_cv_vaga/<int:candidatura_id>')
+def download_cv_vaga(candidatura_id):
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT cv FROM t_candidaturavaga WHERE id = %s", (candidatura_id,))
+    resultado = cur.fetchone()
+    cur.close()
+
+    if resultado is None:
+        return "Candidatura não encontrada", 404
+
+    cv_data = resultado[0]
+
+    if cv_data is None:
+        return "CV não disponível", 404
+
+    return send_file(
+        io.BytesIO(cv_data),
+        as_attachment=True,
+        download_name="CV_Vaga.pdf",  # Nome do arquivo baixado
+        mimetype='application/pdf'
+    )
+
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
