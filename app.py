@@ -238,8 +238,8 @@ def candidaturasrecebidas():
     params = []
 
     if search:
-        query_espontanea += " AND (nome LIKE %s OR email LIKE %s)"
-        query_vaga += " AND (cv.nome LIKE %s OR cv.email LIKE %s)"
+        query_espontanea += " AND (nome LIKE %s)"
+        query_vaga += " AND (cv.nome LIKE %s)"
         params.extend(['%' + search + '%', '%' + search + '%'])
 
     if location:
@@ -251,7 +251,6 @@ def candidaturasrecebidas():
         query_vaga += " AND (v.tipo_contrato = %s)"
         params.append(job_type)
 
-    # Filtra por tipo de candidatura
     if tipo_candidatura == 'espontanea':
         query = query_espontanea
     elif tipo_candidatura == 'vaga':

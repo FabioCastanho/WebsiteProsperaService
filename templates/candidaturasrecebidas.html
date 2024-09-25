@@ -60,28 +60,9 @@
     <main>
       <section class="filters">
         <form id="filterForm">
-          <!-- Filtros existentes -->
-          <div class="filter-group">
-            <label for="location">Localização:</label>
-            <select id="location" name="location">
-              <option value="">Todos</option>
-              <option value="Portugal">Portugal</option>
-              <option value="Estrangeiro">Estrangeiro</option>
-              <option value="Remoto">Remoto</option>
-            </select>
-          </div>
 
           <div class="filter-group">
-            <label for="jobType">Tipo de Emprego:</label>
-            <select id="jobType" name="jobType">
-              <option value="">Todos</option>
-              <option value="Tempo Integral">Full Time</option>
-              <option value="Meio Período">Part-time</option>
-            </select>
-          </div>
-
-          <div class="filter-group">
-            <label for="search">Pesquisar por nome ou email:</label>
+            <label for="search">Pesquisar por nome:</label>
             <input
               type="text"
               id="search"
@@ -106,8 +87,6 @@
         {% for candidatura in candidaturas %}
         <div class="job-item">
           <h2>{{ candidatura[2] }}</h2>
-          <p>Email: {{ candidatura[3] }}</p>
-          <p>Telefone: {{ candidatura[4] }}</p>
           <p>Nacionalidade: {{ candidatura[5] }}</p>
           <p>
             Candidatura: {{ 'Espontânea' if candidatura[0] == 'espontanea' else
