@@ -4,17 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Candidaturas Recebidas</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/detalhevaga.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/vagas.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
-    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logotipo.jpg') }}" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/detalhevaga.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/vagas.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='img/logotipo.jpg') }}"
+      type="image/x-icon"
+    />
   </head>
   <body>
     <header>
       <div class="header-content">
-        <a href="/">
-          <img class="logo" src="{{ url_for('static', filename='img/LOGO3_upscayl_16x_ultrasharp.png') }}" alt="logotipo" />
+        <a href="/admin">
+          <img
+            class="logo"
+            src="{{ url_for('static', filename='img/LOGO3_upscayl_16x_ultrasharp.png') }}"
+            alt="logotipo"
+          />
         </a>
         <nav style="background-color: #173751; height: 80px">
           <ul>
@@ -22,7 +42,9 @@
               <a class="options" href="#">Candidaturas &nbsp;&#9660;</a>
               <ul class="submenu">
                 <li><a href="criarvaga">Criar Vagas</a></li>
-                <li><a href="candidaturasrecebidas">Candidaturas Recebidas</a></li>
+                <li>
+                  <a href="candidaturasrecebidas">Candidaturas Recebidas</a>
+                </li>
               </ul>
             </li>
             <li class="dropdown">
@@ -48,7 +70,7 @@
               <option value="Remoto">Remoto</option>
             </select>
           </div>
-        
+
           <div class="filter-group">
             <label for="jobType">Tipo de Emprego:</label>
             <select id="jobType" name="jobType">
@@ -57,12 +79,17 @@
               <option value="Meio Período">Part-time</option>
             </select>
           </div>
-        
+
           <div class="filter-group">
             <label for="search">Pesquisar por nome ou email:</label>
-            <input type="text" id="search" name="search" placeholder="Ex: João">
+            <input
+              type="text"
+              id="search"
+              name="search"
+              placeholder="Ex: João"
+            />
           </div>
-        
+
           <div class="filter-group">
             <label for="tipo_candidatura">Tipo de Candidatura:</label>
             <select id="tipo_candidatura" name="tipo_candidatura">
@@ -71,10 +98,9 @@
               <option value="espontanea">Candidaturas Espontâneas</option>
             </select>
           </div>
-        
+
           <button type="submit" id="filterButton">Filtrar</button>
         </form>
-        
       </section>
       <section class="job-listings">
         {% for candidatura in candidaturas %}
@@ -83,22 +109,26 @@
           <p>Email: {{ candidatura[3] }}</p>
           <p>Telefone: {{ candidatura[4] }}</p>
           <p>Nacionalidade: {{ candidatura[5] }}</p>
-          <p>Candidatura: {{ 'Espontânea' if candidatura[0] == 'espontanea' else 'Vaga - ' + candidatura[7] }}</p>
-      
-          <form action="
+          <p>
+            Candidatura: {{ 'Espontânea' if candidatura[0] == 'espontanea' else
+            'Vaga - ' + candidatura[7] }}
+          </p>
+
+          <form
+            action="
             {% if candidatura[0] == 'espontanea' %}
                 {{ url_for('detalhecandidatura', candidatura_id=candidatura[1]) }}
             {% else %}
                 {{ url_for('detalhecandidaturavaga', candidatura_id=candidatura[1]) }}
             {% endif %}
-            " method="get">
+            "
+            method="get"
+          >
             <button class="apply-btn">Saber Mais</button>
           </form>
-
         </div>
         {% endfor %}
       </section>
-      
     </main>
     <footer>
       <p>Email: geral@prosperaservice.com</p>
