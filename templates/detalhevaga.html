@@ -12,24 +12,35 @@
   <body>
     <header>
       <div class="header-content">
+        <!-- Link para a logo -->
         <a href="/">
-          <img class="logo" src="{{ url_for('static', filename='img/LOGO3_upscayl_16x_ultrasharp.png') }}" alt="logotipo" />
+          <img
+            class="logo"
+            src="{{ url_for('static', filename='img/LOGO3_upscayl_16x_ultrasharp.png') }}"
+            alt="logotipo"
+          />
         </a>
+
+        <!-- Navegação -->
         <nav style="background-color: #173751; height: 80px">
           <ul>
             <li class="dropdown">
               <a class="options" href="#">Candidaturas &nbsp;&#9660;</a>
               <ul class="submenu">
-                <li><a href="criarvaga">Criar Vagas</a></li>
-                <li><a href="candidaturasrecebidas">Candidaturas Recebidas</a></li>
+                <li><a href="vagas">Vagas Disponíveis</a></li>
+                <li>
+                  <a href="formularioespontaneo">Candidatura Espontânea</a>
+                </li>
               </ul>
             </li>
             <li class="dropdown">
               <a class="options" href="#">Empresas &nbsp;&#9660;</a>
               <ul class="submenu">
-                <li><a href="pedidoscontacto">Pedidos Contacto</a></li>
+                <li><a href="servicos">Serviços</a></li>
               </ul>
             </li>
+            <li><a class="options" href="contactos">Contactos</a></li>
+            <li><a class="options" href="sobrenos">Sobre nós</a></li>
           </ul>
         </nav>
       </div>

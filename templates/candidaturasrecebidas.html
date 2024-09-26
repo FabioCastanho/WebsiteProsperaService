@@ -42,6 +42,7 @@
               <a class="options" href="#">Candidaturas &nbsp;&#9660;</a>
               <ul class="submenu">
                 <li><a href="criarvaga">Criar Vagas</a></li>
+                <li><a href="vagasadmin">Vagas</a></li>
                 <li>
                   <a href="candidaturasrecebidas">Candidaturas Recebidas</a>
                 </li>
@@ -86,28 +87,29 @@
       <section class="job-listings">
         {% for candidatura in candidaturas %}
         <div class="job-item">
-          <h2>{{ candidatura[2] }}</h2>
-          <p>Nacionalidade: {{ candidatura[5] }}</p>
-          <p>
-            Candidatura: {{ 'Espontânea' if candidatura[0] == 'espontanea' else
-            'Vaga - ' + candidatura[7] }}
-          </p>
-
-          <form
-            action="
-            {% if candidatura[0] == 'espontanea' %}
-                {{ url_for('detalhecandidatura', candidatura_id=candidatura[1]) }}
-            {% else %}
-                {{ url_for('detalhecandidaturavaga', candidatura_id=candidatura[1]) }}
-            {% endif %}
-            "
-            method="get"
-          >
-            <button class="apply-btn">Saber Mais</button>
-          </form>
+            <h2>{{ candidatura[2] }}</h2>
+            <p>Nacionalidade: {{ candidatura[5] }}</p>
+            <p>
+                Candidatura: {{ 'Espontânea' if candidatura[0] == 'espontanea' else 'Vaga - ' + candidatura[7] }}
+            </p>
+    
+            <form action="
+                {% if candidatura[0] == 'espontanea' %}
+                    {{ url_for('detalhecandidatura', candidatura_id=candidatura[1]) }}
+                {% else %}
+                    {{ url_for('detalhecandidaturavaga', candidatura_id=candidatura[1]) }}
+                {% endif %}
+                "
+                method="get">
+                <button class="apply-btn">Saber Mais</button>
+            </form>
+              <br>
+            <form action="{{ url_for('apagar_candidatura', candidatura_id=candidatura[1]) }}" method="post" style="display:inline;">
+                <button type="submit" class="delete-btn">Apagar</button>
+            </form>
         </div>
         {% endfor %}
-      </section>
+    </section>
     </main>
     <footer>
       <p>Email: geral@prosperaservice.com</p>

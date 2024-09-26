@@ -131,7 +131,7 @@ def criarvaga():
     return render_template('criarvaga.html')
 
 
-@app.route('/loginadmin')
+@app.route('/loginadmin', methods=['GET', 'POST'])
 def loginadmin():
     if request.method == 'POST':
         username = request.form['username']
@@ -360,6 +360,60 @@ def download_cv_vaga(candidatura_id):
         mimetype='application/pdf'
     )
 
+@app.route('/apagar_candidatura/<int:candidatura_id>', methods=['POST'])
+@login_required
+def apagar_candidatura(candidatura_id):
+    cur = mysql.connection.cursor()
+    cur.execute("DELETE FROM t_candidaturaexpontanea WHERE id = %s", (candidatura_id,))
+    mysql.connection.commit()
+    cur.close()
+    return redirect(url_for('candidaturasrecebidas'))
+
+@app.route('/apagar_pedido/<int:pedido_id>', methods=['POST'])
+@login_required
+def apagar_pedido(pedido_id):
+    cur = mysql.connection.cursor()
+    cur.execute("DELETE FROM t_pedido WHERE id = %s", (pedido_id,))
+    mysql.connection.commit()
+    cur.close()
+    return redirect(url_for('pedidoscontacto'))
+
+@app.route('/vagasadmin', methods=['GET'])
+def vagasadmin():
+    search = request.args.get('search', '')
+    location = request.args.get('location', '')
+    job_type = request.args.get('jobType', '')
+
+    query = "SELECT * FROM t_vaga WHERE 1=1"
+    params = []
+
+    if search:
+        query += " AND (titulo LIKE %s OR area LIKE %s)"
+        params.extend(['%' + search + '%', '%' + search + '%'])
+
+    if location:
+        query += " AND localizacao = %s"
+        params.append(location)
+
+    if job_type:
+        query += " AND tipo_contrato = %s"
+        params.append(job_type)
+
+    cur = mysql.connection.cursor()
+    cur.execute(query, params)
+    vagas = cur.fetchall()
+    cur.close()
+
+    return render_template('vagasadmin.html', vagas=vagas)
+
+@app.route('/apagar_vaga/<int:vaga_id>', methods=['POST'])
+@login_required
+def apagar_vaga(vaga_id):
+    cur = mysql.connection.cursor()
+    cur.execute("DELETE FROM t_candidaturaexpontanea WHERE id = %s", (vaga_id,))
+    mysql.connection.commit()
+    cur.close()
+    return redirect(url_for('vagasadmin'))
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
