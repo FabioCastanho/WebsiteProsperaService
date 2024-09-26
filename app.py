@@ -1,9 +1,18 @@
-from flask import Flask, render_template, request, redirect, jsonify, session, url_for, send_file, make_response
+from flask import Flask, render_template, request, redirect, url_for, send_file, session, abort
 from flask_mysqldb import MySQL
 import io
+from functools import wraps
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
+
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'user_id' not in session:
+            return redirect(url_for('loginadmin'))
+        return f(*args, **kwargs)
+    return decorated_function
 
 @app.route('/')
 def home():
@@ -93,6 +102,7 @@ def vagas():
 
 
 @app.route('/admin')
+@login_required
 def admin():
     return render_template('admin.html')
 
@@ -122,10 +132,21 @@ def criarvaga():
 
 
 @app.route('/loginadmin')
-def loginadmn():
+def loginadmin():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        
+        if username == 'admin' and password == 'pass':  
+            session['user_id'] = username  
+            return redirect(url_for('admin'))
+        else:
+            return "Login inválido", 401
+
     return render_template('loginadmin.html')
 
 @app.route('/detalhecandidatura/<int:candidatura_id>')
+@login_required
 def detalhecandidatura(candidatura_id):
     cur = mysql.connection.cursor()
     cur.execute("""
@@ -143,6 +164,7 @@ def detalhecandidatura(candidatura_id):
     return render_template('detalhecandidatura.html', candidatura = candidatura)
 
 @app.route('/detalhecandidaturavaga/<int:candidatura_id>')
+@login_required
 def detalhecandidaturavaga(candidatura_id):
     cur = mysql.connection.cursor()
 
@@ -164,6 +186,7 @@ def detalhecandidaturavaga(candidatura_id):
 
 
 @app.route('/detalhepedido/<int:pedido_id>')
+@login_required
 def detalhepedido(pedido_id):
     cur = mysql.connection.cursor()
     cur.execute("""
@@ -216,6 +239,7 @@ def formulariovaga(vaga_id):
 
 
 @app.route('/candidaturasrecebidas', methods=['GET'])
+@login_required
 def candidaturasrecebidas():
     location = request.args.get('location', '')
     job_type = request.args.get('jobType', '')
@@ -267,6 +291,7 @@ def candidaturasrecebidas():
 
 
 @app.route('/pedidoscontacto')
+@login_required
 def pedidoscontacto():
     search_query = request.args.get('search', '') 
 
@@ -290,6 +315,7 @@ def pedidoscontacto():
 
 
 @app.route('/download_cv/<int:candidatura_id>')
+@login_required
 def download_cv(candidatura_id):
     cur = mysql.connection.cursor()
     cur.execute("SELECT cv FROM t_candidaturaexpontanea WHERE id = %s", (candidatura_id,))
@@ -312,6 +338,7 @@ def download_cv(candidatura_id):
     )
 
 @app.route('/download_cv_vaga/<int:candidatura_id>')
+@login_required
 def download_cv_vaga(candidatura_id):
     cur = mysql.connection.cursor()
     cur.execute("SELECT cv FROM t_candidaturavaga WHERE id = %s", (candidatura_id,))
