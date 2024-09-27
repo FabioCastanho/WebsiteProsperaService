@@ -137,7 +137,12 @@ def loginadmin():
         username = request.form['username']
         password = request.form['password']
         
-        if username == 'admin' and password == 'pass':  
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT password FROM login WHERE username = %s", (username,))
+        result = cur.fetchone()
+        cur.close()
+
+        if result and password:
             session['user_id'] = username  
             return redirect(url_for('admin'))
         else:
