@@ -71,25 +71,26 @@
   </section>
   
 
-    <section class="job-listings">
-        {% for vaga in vagas %}
-        <div class="job-item">
-            <form action="{{ url_for('detalhevaga', vaga_id=vaga[0]) }}" method="get">            
-                <h2>{{ vaga[1] }}</h2>
-                <p>Área: {{ vaga[7] }}</p>
-                <p>Localização: {{ vaga[5] }}</p>
-                <p>Tipo de Contrato: {{ vaga[6] }}</p>
-                <button class="apply-btn">Saber Mais</button>
-            </form>
-            <br>
-            <form action="{{ url_for('apagar_vaga', vaga_id=vaga[0]) }}" method="post" style="display:inline;"></form>
-                <button type="submit" class="delete-btn">Apagar</button>
-            </form>
-        </div>
-        {% else %}
-        <p>Nenhuma vaga encontrada.</p>
-        {% endfor %}
-    </section>
+  <section class="job-listings">
+    {% for vaga in vagas %}
+    <div class="job-item">
+        <form action="{{ url_for('detalhevaga', vaga_id=vaga[0]) }}" method="get">            
+            <h2>{{ vaga[1] }}</h2>
+            <p>Área: {{ vaga[7] }}</p>
+            <p>Localização: {{ vaga[5] }}</p>
+            <p>Tipo de Contrato: {{ vaga[6] }}</p>
+            <button class="apply-btn">Saber Mais</button>
+        </form>
+        <br>
+        <form action="{{ url_for('apagar_vaga', vaga_id=vaga[0]) }}" method="post" style="display:inline;">
+            <button type="submit" class="delete-btn">Apagar</button>
+        </form>
+    </div>
+    {% else %}
+    <p>Nenhuma vaga encontrada.</p>
+    {% endfor %}
+</section>
+
 
     <footer>
         <p>Email: geral@prosperaservice.com</p>
