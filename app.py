@@ -410,10 +410,15 @@ def vagasadmin():
 @login_required
 def apagar_vaga(vaga_id):
     cur = mysql.connection.cursor()
+
+    cur.execute("DELETE FROM t_candidaturavaga WHERE id_vaga = %s", (vaga_id,))
+
     cur.execute("DELETE FROM t_vaga WHERE id = %s", (vaga_id,))
     mysql.connection.commit()
     cur.close()
+
     return redirect(url_for('vagasadmin'))
+
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
