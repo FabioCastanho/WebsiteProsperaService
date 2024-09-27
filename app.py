@@ -410,7 +410,7 @@ def vagasadmin():
 @login_required
 def apagar_vaga(vaga_id):
     cur = mysql.connection.cursor()
-    cur.execute("DELETE FROM t_candidaturaexpontanea WHERE id = %s", (vaga_id,))
+    cur.execute("DELETE FROM t_vaga WHERE id = %s", (vaga_id,))
     mysql.connection.commit()
     cur.close()
     return redirect(url_for('vagasadmin'))
