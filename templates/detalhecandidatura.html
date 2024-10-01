@@ -41,26 +41,25 @@
         <p></p>
 
         <h2>Informações</h2>
-        <ul>
+        
           {% if candidatura[0] == 'espontanea' %}
-          <li><strong>Nome:</strong> {{ candidatura[2] }}</li>
-          <li><strong>Email:</strong> {{ candidatura[3] }}</li>
-          <li><strong>Telefone:</strong> {{ candidatura[4] }}</li>
-          <li><strong>Nacionalidade:</strong> {{ candidatura[5] }}</li>
-          <li><strong>Área:</strong> {{ candidatura[6] }}</li>
-          <li><strong>Currículo:</strong> 
+          <p><strong>Nome:</strong> {{ candidatura[2] }}</p>
+          <p><strong>Email:</strong> {{ candidatura[3] }}</p>
+          <p><strong>Telefone:</strong> {{ candidatura[4] }}</p>
+          <p><strong>Nacionalidade:</strong> {{ candidatura[5] }}</p>
+          <p><strong>Área:</strong> {{ candidatura[6] }}</p>
+          <p><strong>Currículo:</strong> 
               <a href="{{ url_for('download_cv', candidatura_id=candidatura[1]) }}" download>Download CV</a>
-          </li>
+          </p>
           {% else %}
-            <li><strong>Nome completo:</strong> {{ candidatura[1] }}</li>
-            <li><strong>Email:</strong> {{ candidatura[2] }}</li>
-            <li><strong>Telefone:</strong> {{ candidatura[3] }}</li>
-            <li><strong>Vaga a que se candidatou:</strong> {{ candidatura[5] }}</li>
-            <li><strong>Currículo:</strong> 
+            <p><strong>Nome completo:</strong> {{ candidatura[1] }}</p>
+            <p><strong>Email:</strong> {{ candidatura[2] }}</p>
+            <p><strong>Telefone:</strong> {{ candidatura[3] }}</p>
+            <p><strong>Vaga a que se candidatou:</strong> {{ candidatura[5] }}</p>
+            <p><strong>Currículo:</strong> 
                 <a href="{{ url_for('download_cv_vaga', candidatura_id=candidatura[0]) }}" download>Download CV</a>
-            </li>
+            </p>
           {% endif %}
-        </ul>
         <form action="{{ url_for('candidaturasrecebidas') }}">
           <button class="btn-candidatar">Voltar</button>
         </form>

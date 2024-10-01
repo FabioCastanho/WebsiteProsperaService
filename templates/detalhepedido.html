@@ -43,14 +43,12 @@
         <p></p>
         <p></p>
         <h2>{{ pedido[2] }} </h2>
-        <ul>
-          <li>Nome do Contacto: {{ pedido[1] }}</li>
-          <li>Email: {{ pedido[3] }}</li>
-          <li>Telefone: {{ pedido[4] }}</li>
-          <li>Área: {{ pedido[5] }}</li>
+          <p>Nome do Contacto: {{ pedido[1] }}</p>
+          <p>Email: {{ pedido[3] }}</p>
+          <p>Telefone: {{ pedido[4] }}</p>
+          <p>Área: {{ pedido[5] }}</p>
           <br><br>
-          <li>Mensagem:<br>{{ pedido[6] }}</li>
-        </ul>
+          <p>Mensagem:<br>{{ pedido[6] }}</p>
         <form action="{{ url_for('pedidoscontacto') }}">
           <button class="btn-candidatar">Voltar</button>
         </form>
